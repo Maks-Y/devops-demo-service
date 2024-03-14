@@ -6,7 +6,7 @@ services:
         image: nginx:1.20-alpine
         restart: unless-stopped
         volumes:
-            - ./web_db/configs/nginx/:/etc/nginx/templates/:ro
+            - ./myservice/Nginx/configs/:/etc/nginx/templates/:ro
 #            - ./certs/ssl/:/etc/nginx/ssl/:ro
 
         ports:
@@ -17,7 +17,7 @@ services:
    postgres:
     image: postgres
     volumes:
-      - ./web_db/Postgres:/var/lib/postgresql/data
+      - ./myservice/Postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD

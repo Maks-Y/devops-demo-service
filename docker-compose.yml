@@ -1,1 +1,26 @@
-1test
+version: '3.5'
+
+services:
+   nginx:
+        container_name: web-nginx
+        image: nginx:1.20-alpine
+        restart: unless-stopped
+        volumes:
+            - ./web_db/configs/nginx/:/etc/nginx/templates/:ro
+#            - ./certs/ssl/:/etc/nginx/ssl/:ro
+
+        ports:
+            - "80:80"
+            - "443:443"
+
+services:
+   postgres:
+    image: postgres
+    volumes:
+      - ./web_db/Postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - 5432:5432

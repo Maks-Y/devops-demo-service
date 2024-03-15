@@ -13,7 +13,6 @@ services:
             - "80:80"
             - "443:443"
 
-services:
    postgres:
     image: postgres
     volumes:
@@ -22,5 +21,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - DB_HOST
     ports:
       - 5432:5432

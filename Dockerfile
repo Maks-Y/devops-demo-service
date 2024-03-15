@@ -10,7 +10,8 @@ RUN apt update
 RUN apt install -y gcc g++
 RUN pip install --upgrade pip
 RUN pip install poetry
-RUN poetry add django
+
+
 
 RUN mkdir $PKGS_DIR
 RUN mkdir /code
